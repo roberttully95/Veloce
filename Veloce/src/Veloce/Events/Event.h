@@ -1,5 +1,6 @@
 #pragma once
 
+#include "velpch.h"
 #include "Veloce/Core.h"
 
 namespace Veloce

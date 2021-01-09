@@ -12,6 +12,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#ifdef VEL_PLATFORM_WINDOWS
+#include "Veloce/Log.h"
+
+#ifdef VELOCE_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

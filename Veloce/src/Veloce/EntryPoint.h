@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef VEL_PLATFORM_WINDOWS
+#ifdef VELOCE_PLATFORM_WINDOWS
 
 extern Veloce::Application* Veloce::CreateApplication();
 

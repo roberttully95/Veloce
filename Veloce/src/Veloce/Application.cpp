@@ -4,11 +4,13 @@
 #include "Veloce/Events/ApplicationEvent.h"
 #include "Veloce/Log.h"
 
+#include <GLFW/glfw3.h>
+
 namespace Veloce
 {
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application()
@@ -18,16 +20,9 @@ namespace Veloce
 
 	void Application::Run()
 	{
-		WindowResizeEvent e(1280, 720);
-		if (e.IsInCategory(EventCategoryApplication))
+		while (m_Running)
 		{
-			VELOCE_TRACE(e);
+			m_Window->OnUpdate();
 		}
-		if (e.IsInCategory(EventCategoryInput))
-		{
-			VELOCE_TRACE(e);
-		}
-
-		while (true);
 	}
 }

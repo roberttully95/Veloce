@@ -1,3 +1,5 @@
+
+
 workspace "Veloce"
 	architecture "x64"
 
@@ -8,6 +10,14 @@ workspace "Veloce"
 	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+-- Include directories relative to root folder
+IncludeDir = {};
+IncludeDir["GLFW"] = "Veloce/vendor/GLFW/include"
+
+include "Veloce/vendor/GLFW"
+
+startproject "Sandbox"
 
 project "Veloce"
 	location "Veloce"
@@ -29,8 +39,13 @@ project "Veloce"
 
 	includedirs{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
-		
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -39,7 +54,7 @@ project "Veloce"
 		systemversion "latest"
 
 		defines{
-			"VEL_PLATFORM_WINDOWS",
+			"VELOCE_PLATFORM_WINDOWS",
 			"VELOCE_BUILD_DLL"
 		}
 
@@ -90,7 +105,7 @@ project "Sandbox"
 		systemversion "latest"
 
 		defines{
-			"VEL_PLATFORM_WINDOWS"
+			"VELOCE_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"

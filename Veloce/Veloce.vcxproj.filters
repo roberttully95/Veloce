@@ -7,6 +7,12 @@
     <Filter Include="Veloce\Events">
       <UniqueIdentifier>{871E2C78-F3DE-A7AE-BC19-F12B2899EC8A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Veloce\Platform">
+      <UniqueIdentifier>{B7E3CB4F-236F-3914-2C80-BC08988A9514}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Veloce\Platform\Windows">
+      <UniqueIdentifier>{F154010E-5D8C-49A5-6696-ADC8D24C709E}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Veloce.h" />
@@ -34,6 +40,12 @@
     <ClInclude Include="src\Veloce\Log.h">
       <Filter>Veloce</Filter>
     </ClInclude>
+    <ClInclude Include="src\Veloce\Platform\Windows\WindowsWindow.h">
+      <Filter>Veloce\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Veloce\Window.h">
+      <Filter>Veloce</Filter>
+    </ClInclude>
     <ClInclude Include="src\velpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="src\Veloce\Log.cpp">
       <Filter>Veloce</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Veloce\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Veloce\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\velpch.cpp" />
   </ItemGroup>
