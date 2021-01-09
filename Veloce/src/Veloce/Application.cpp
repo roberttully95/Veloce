@@ -1,3 +1,4 @@
+#include "velpch.h"
 #include "Application.h"
 
 #include "Veloce/Events/ApplicationEvent.h"

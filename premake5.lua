@@ -16,6 +16,9 @@ project "Veloce"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	
+	pchheader "velpch.h"
+	pchsource "Veloce/src/velpch.cpp"
 
 	files{
 		"%{prj.name}/src/**.h",

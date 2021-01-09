@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Veloce {
 
 	class VELOCE_API MouseMovedEvent : public Event

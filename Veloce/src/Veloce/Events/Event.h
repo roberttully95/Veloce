@@ -2,9 +2,6 @@
 
 #include "Veloce/Core.h"
 
-#include <string>
-#include <functional>
-
 namespace Veloce
 {
 	// Events in Veloce are currently blocking, meaning when an event occurs it

@@ -19,15 +19,22 @@
     <ClInclude Include="src\Veloce\EntryPoint.h">
       <Filter>Veloce</Filter>
     </ClInclude>
+    <ClInclude Include="src\Veloce\Events\ApplicationEvent.h">
+      <Filter>Veloce\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Veloce\Events\Event.h">
+      <Filter>Veloce\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Veloce\Events\KeyEvent.h">
+      <Filter>Veloce\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Veloce\Events\MouseEvent.h">
       <Filter>Veloce\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Veloce\Log.h">
       <Filter>Veloce</Filter>
     </ClInclude>
-    <ClInclude Include="src\Veloce\Events\KeyEvent.h" />
-    <ClInclude Include="src\Veloce\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\Veloce\Events\MouseEvent.h" />
+    <ClInclude Include="src\velpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Veloce\Application.cpp">
@@ -36,5 +43,6 @@
     <ClCompile Include="src\Veloce\Log.cpp">
       <Filter>Veloce</Filter>
     </ClCompile>
+    <ClCompile Include="src\velpch.cpp" />
   </ItemGroup>
 </Project>
