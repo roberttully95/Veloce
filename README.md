@@ -1,3 +1,3 @@
 # Veloce
 
-![Veloce](/Resources/logos/logo.png?raw=true "Veloce")
+![Veloce](/Resources/logos/logo.PNG? "Veloce")
