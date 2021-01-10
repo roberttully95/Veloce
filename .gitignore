@@ -1,6 +1,6 @@
-# Directories
+# Binaries
 **/bin/
-!vendor/bin/premake/
+!vendor/bin/
 bin-int/
 
 # Files
