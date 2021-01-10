@@ -1,7 +1,6 @@
-
-
 workspace "Veloce"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations{
 		"Debug",
@@ -16,8 +15,6 @@ IncludeDir = {};
 IncludeDir["GLFW"] = "Veloce/vendor/GLFW/include"
 
 include "Veloce/vendor/GLFW"
-
-startproject "Sandbox"
 
 project "Veloce"
 	location "Veloce"
@@ -64,14 +61,17 @@ project "Veloce"
 
 	filter "configurations:Debug"
 		defines "VELOCE_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "VELOCE_RELEASE"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "VELOCE_DIST"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
@@ -110,12 +110,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "VELOCE_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "VELOCE_RELEASE"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "VELOCE_DIST"
+		runtime "Release"
 		optimize "On"
