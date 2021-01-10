@@ -1,3 +1,5 @@
 # Veloce
 
-![Veloce](/Resources/logos/logo.PNG? "Veloce")
+<p align="center">
+  <img src="/Resources/logos/logo.PNG" />
+</p>
