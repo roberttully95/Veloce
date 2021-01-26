@@ -56,22 +56,22 @@ project "Veloce"
 		}
 
 		postbuildcommands{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
 		defines "VELOCE_DEBUG"
-		runtime "Debug"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "VELOCE_RELEASE"
-		runtime "Release"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "VELOCE_DIST"
-		runtime "Release"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -110,15 +110,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "VELOCE_DEBUG"
-		runtime "Debug"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "VELOCE_RELEASE"
-		runtime "Release"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "VELOCE_DIST"
-		runtime "Release"
+		buildoptions "/MD"
 		optimize "On"

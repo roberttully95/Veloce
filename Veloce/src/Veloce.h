@@ -3,6 +3,7 @@
 // For use by Veloce applications
 
 #include "Veloce/Application.h"
+#include "Veloce/Layer.h"
 #include "Veloce/Log.h"
 
 // Entry point

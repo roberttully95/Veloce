@@ -1,10 +1,10 @@
 #pragma once
 
 #include "Core.h"
-#include "Events/Event.h"
-#include "Veloce/Events/ApplicationEvent.h"
-
 #include "Window.h"
+#include "Veloce/LayerStack.h"
+#include "Veloce/Events/Event.h"
+#include "Veloce/Events/ApplicationEvent.h"
 
 namespace Veloce
 {
@@ -14,6 +14,9 @@ namespace Veloce
 		Application();
 		virtual ~Application();
 
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
+		
 		void OnEvent(Event& e);
 		void Run();
 
@@ -22,6 +25,7 @@ namespace Veloce
 
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
+		LayerStack m_LayerStack;
 	};
 
 	// To be defined in client.
