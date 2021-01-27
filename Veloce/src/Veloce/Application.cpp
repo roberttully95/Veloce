@@ -4,7 +4,7 @@
 #include "Veloce/Events/ApplicationEvent.h"
 #include "Veloce/Log.h"
 
-#include <GLFW/glfw3.h>
+#include "glad/glad.h"
 
 namespace Veloce
 {

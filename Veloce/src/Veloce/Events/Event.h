@@ -45,7 +45,7 @@ namespace Veloce
 		virtual int GetCategoryFlags() const = 0;
 		virtual std::string ToString() const { return GetName(); }
 
-		inline bool IsInCategory(EventCategory category)
+		[[nodiscard]] bool IsInCategory(const EventCategory category) const
 		{
 			return GetCategoryFlags() & category;
 		}
@@ -66,7 +66,7 @@ namespace Veloce
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.Handled = func(*(T*)&m_Event);
+				m_Event.Handled = func(*static_cast<T*>(&m_Event));
 				return true;
 			}
 			return false;

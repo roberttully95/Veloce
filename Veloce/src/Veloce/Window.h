@@ -14,8 +14,8 @@ namespace Veloce {
 		unsigned int Height;
 
 		WindowProps(const std::string& title = "Veloce Engine",
-			unsigned int width = 1280,
-			unsigned int height = 720)
+		            const unsigned int width = 1280,
+		            const unsigned int height = 720)
 			: Title(title), Width(width), Height(height)
 		{
 		}

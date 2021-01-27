@@ -5,6 +5,8 @@
 #include "Veloce/Events/MouseEvent.h"
 #include "Veloce/Events/KeyEvent.h"
 
+#include "glad/glad.h"
+
 namespace Veloce {
 
 	static bool s_GLFWInitialized = false;
@@ -21,12 +23,12 @@ namespace Veloce {
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
-		Init(props);
+		WindowsWindow::Init(props);
 	}
 
 	WindowsWindow::~WindowsWindow()
 	{
-		Shutdown();
+		WindowsWindow::Shutdown();
 	}
 
 	void WindowsWindow::Init(const WindowProps& props)
@@ -40,21 +42,23 @@ namespace Veloce {
 		if (!s_GLFWInitialized)
 		{
 			// TODO: glfwTerminate on system shutdown
-			int success = glfwInit();
+			auto success = glfwInit();
 			VELOCE_CORE_ASSERT(success, "Could not intialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
 		}
 
-		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+		m_Window = glfwCreateWindow(static_cast<int>(props.Width), static_cast<int>(props.Height), m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		auto status = gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress));
+		VELOCE_CORE_ASSERT(status, "Failed to initialize Glad.")
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
 		// Set GLFW callbacks
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
 			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				auto& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 				data.Width = width;
 				data.Height = height;
 
@@ -64,14 +68,14 @@ namespace Veloce {
 
 		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
 			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				auto& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 				WindowCloseEvent event;
 				data.EventCallback(event);
 			});
 
 		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				auto& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 
 				switch (action)
 				{
@@ -98,7 +102,7 @@ namespace Veloce {
 
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
 			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				auto& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 
 				switch (action)
 				{
@@ -119,17 +123,17 @@ namespace Veloce {
 
 		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset)
 			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				auto& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 
-				MouseScrolledEvent event((float)xOffset, (float)yOffset);
+				MouseScrolledEvent event(static_cast<float>(xOffset), static_cast<float>(yOffset));
 				data.EventCallback(event);
 			});
 
 		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xPos, double yPos)
 			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				auto& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 
-				MouseMovedEvent event((float)xPos, (float)yPos);
+				MouseMovedEvent event(static_cast<float>(xPos), static_cast<float>(yPos));
 				data.EventCallback(event);
 			});
 	}
