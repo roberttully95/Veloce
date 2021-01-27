@@ -1,0 +1,6 @@
+[submodule "Veloce/vendor/spdlog"]
+	path = Veloce/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "Veloce/vendor/GLFW"]
+	path = Veloce/vendor/GLFW
+	url = https://github.com/TheCherno/glfw
