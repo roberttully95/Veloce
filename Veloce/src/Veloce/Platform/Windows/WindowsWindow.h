@@ -13,8 +13,8 @@ namespace Veloce {
 
 		void OnUpdate() override;
 
-		[[nodiscard]] unsigned int GetWidth() const override { return m_Data.Width; }
-		[[nodiscard]] unsigned int GetHeight() const override { return m_Data.Height; }
+		[[nodiscard]] float GetWidth() const override { return m_Data.Width; }
+		[[nodiscard]] float GetHeight() const override { return m_Data.Height; }
 
 		// Window attributes
 		void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
@@ -28,7 +28,7 @@ namespace Veloce {
 		struct WindowData
 		{
 			std::string Title;
-			unsigned int Width, Height;
+			float Width, Height;
 			bool VSync;
 
 			EventCallbackFn EventCallback;

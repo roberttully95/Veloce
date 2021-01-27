@@ -14,9 +14,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {};
 IncludeDir["GLFW"] = "Veloce/vendor/GLFW/include"
 IncludeDir["Glad"] = "Veloce/vendor/Glad/include"
+IncludeDir["ImGui"] = "Veloce/vendor/ImGui"
 
 include "Veloce/vendor/GLFW"
 include "Veloce/vendor/Glad"
+include "Veloce/vendor/ImGui"
 
 project "Veloce"
 	location "Veloce"
@@ -40,11 +42,13 @@ project "Veloce"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links{
 		"GLFW",
+		"ImGui",
 		"Glad",
 		"opengl32.lib"
 	}
@@ -55,6 +59,7 @@ project "Veloce"
 		systemversion "latest"
 
 		defines{
+			"_CRT_SECURE_NO_WARNINGS",
 			"VELOCE_PLATFORM_WINDOWS",
 			"VELOCE_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"

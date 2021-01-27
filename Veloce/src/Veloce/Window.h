@@ -10,12 +10,12 @@ namespace Veloce {
 	struct WindowProps
 	{
 		std::string Title;
-		unsigned int Width;
-		unsigned int Height;
+		float Width;
+		float Height;
 
 		WindowProps(const std::string& title = "Veloce Engine",
-		            const unsigned int width = 1280,
-		            const unsigned int height = 720)
+		            const float width = 1280.0f,
+		            const float height = 720.0f)
 			: Title(title), Width(width), Height(height)
 		{
 		}
@@ -31,8 +31,8 @@ namespace Veloce {
 
 		virtual void OnUpdate() = 0;
 
-		virtual unsigned int GetWidth() const = 0;
-		virtual unsigned int GetHeight() const = 0;
+		virtual float GetWidth() const = 0;
+		virtual float GetHeight() const = 0;
 
 		// Window attributes
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;

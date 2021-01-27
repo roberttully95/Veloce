@@ -56,11 +56,11 @@ namespace Veloce {
 		SetVSync(true);
 
 		// Set GLFW callbacks
-		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
+		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, const int width, const int height)
 			{
 				auto& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
-				data.Width = width;
-				data.Height = height;
+				data.Width = static_cast<float>(width);
+				data.Height = static_cast<float>(height);
 
 				WindowResizeEvent event(width, height);
 				data.EventCallback(event);
@@ -73,7 +73,7 @@ namespace Veloce {
 				data.EventCallback(event);
 			});
 
-		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, const int key, int scancode, const int action, int mods)
 			{
 				auto& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 
@@ -100,7 +100,7 @@ namespace Veloce {
 				}
 			});
 
-		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
+		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, const int button, const int action, int mods)
 			{
 				auto& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 
