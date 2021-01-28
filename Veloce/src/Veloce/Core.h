@@ -18,4 +18,6 @@
 	#define VELOCE_CORE_ASSERT(x, ...)
 #endif
 
-#define BIT(x) (1 << x)
+#define BIT(x) (1 << (x))
+#define VELOCE_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)

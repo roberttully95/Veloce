@@ -2,7 +2,8 @@ workspace "Veloce"
 	architecture "x64"
 	startproject "Sandbox"
 
-	configurations{
+	configurations
+	{
 		"Debug",
 		"Release",
 		"Dist"
@@ -24,21 +25,24 @@ project "Veloce"
 	location "Veloce"
 	kind "SharedLib"
 	language "C++"
-
+	staticruntime "off"
+	
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	
 	pchheader "velpch.h"
 	pchsource "Veloce/src/velpch.cpp"
 
-	files{
+	files
+	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.hpp",
 		"%{prj.name}/src/**.c",
 		"%{prj.name}/src/**.cpp",
 	}
 
-	includedirs{
+	includedirs
+	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
@@ -46,7 +50,8 @@ project "Veloce"
 		"%{IncludeDir.ImGui}"
 	}
 
-	links{
+	links
+	{
 		"GLFW",
 		"ImGui",
 		"Glad",
@@ -55,80 +60,85 @@ project "Veloce"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
-		defines{
+		defines
+		{
 			"_CRT_SECURE_NO_WARNINGS",
 			"VELOCE_PLATFORM_WINDOWS",
 			"VELOCE_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands{
+		postbuildcommands
+		{
 			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
 		defines "VELOCE_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "VELOCE_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "VELOCE_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-
+	staticruntime "off"
+	
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	files{
+	files
+	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.hpp",
 		"%{prj.name}/src/**.c",
 		"%{prj.name}/src/**.cpp",
 	}
 
-	includedirs{
+	includedirs
+	{
 		"Veloce/vendor/spdlog/include",
 		"Veloce/src",
 
 	}
 
-	links{
+	links
+	{
 		"Veloce"
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
-		defines{
+		defines
+		{
 			"VELOCE_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"
 		defines "VELOCE_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "VELOCE_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "VELOCE_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"

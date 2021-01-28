@@ -100,6 +100,14 @@ namespace Veloce {
 				}
 			});
 
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
+			{
+				auto& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+
+				KeyTypedEvent event(keycode);
+				data.EventCallback(event);
+			});
+		
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, const int button, const int action, int mods)
 			{
 				auto& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));

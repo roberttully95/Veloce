@@ -54,4 +54,20 @@ namespace Veloce {
 
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
+
+	class VELOCE_API KeyTypedEvent : public KeyEvent
+	{
+	public:
+		KeyTypedEvent(const int keycode)
+			: KeyEvent(keycode) {}
+
+		[[nodiscard]] std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyTypedEvent: " << m_KeyCode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
+	};
 }
