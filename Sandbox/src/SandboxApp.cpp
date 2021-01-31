@@ -10,12 +10,19 @@ public:
 
 	void OnUpdate() override
 	{
-		VELOCE_INFO("ExampleLayer::Update");
+		if (Hazel::Input::IsKeyPressed(VELOCE_KEY_TAB))
+			VELOCE_TRACE("Tab key is pressed (poll)!");
 	}
 
 	void OnEvent(Veloce::Event& event) override
 	{
-		VELOCE_TRACE("{0}", event);
+		if (event.GetEventType() == Veloce::EventType::KeyPressed)
+		{	
+			auto& e = dynamic_cast<Veloce::KeyPressedEvent&>(event);
+			if (e.GetKeyCode() == VELOCE_KEY_TAB)
+				VELOCE_TRACE("Tab key is pressed (event)!");
+			VELOCE_TRACE("{0}", static_cast<char>(e.GetKeyCode()));
+		}
 	}
 
 };
@@ -27,11 +34,6 @@ public:
 	{
 		PushLayer(new ExampleLayer());
 		PushOverlay(new Veloce::ImGuiLayer());
-	}
-
-	~Sandbox()
-	{
-
 	}
 };
 
