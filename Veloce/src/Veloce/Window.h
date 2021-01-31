@@ -31,14 +31,17 @@ namespace Veloce {
 
 		virtual void OnUpdate() = 0;
 
-		virtual float GetWidth() const = 0;
-		virtual float GetHeight() const = 0;
+		[[nodiscard]] virtual float GetWidth() const = 0;
+		[[nodiscard]] virtual float GetHeight() const = 0;
 
 		// Window attributes
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
-		virtual bool IsVSync() const = 0;
+		[[nodiscard]] virtual bool IsVSync() const = 0;
 
+		// Getter for window
+		[[nodiscard]] virtual void* GetNativeWindow() const = 0;
+		
 		static Window* Create(const WindowProps& props = WindowProps());
 	};
 

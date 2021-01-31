@@ -21,6 +21,8 @@ namespace Veloce {
 		void SetVSync(bool enabled) override;
 		[[nodiscard]] bool IsVSync() const override;
 	private:
+		[[nodiscard]] void* GetNativeWindow() const override { return m_Window; }
+		
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();
 		GLFWwindow* m_Window;
