@@ -16,6 +16,7 @@ IncludeDir = {};
 IncludeDir["GLFW"] = "Veloce/vendor/GLFW/include"
 IncludeDir["Glad"] = "Veloce/vendor/Glad/include"
 IncludeDir["ImGui"] = "Veloce/vendor/ImGui"
+IncludeDir["glm"] = "Hazel/vendor/glm"
 
 include "Veloce/vendor/GLFW"
 include "Veloce/vendor/Glad"
@@ -39,6 +40,8 @@ project "Veloce"
 		"%{prj.name}/src/**.hpp",
 		"%{prj.name}/src/**.c",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 
 	includedirs
@@ -47,7 +50,8 @@ project "Veloce"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -111,7 +115,7 @@ project "Sandbox"
 	{
 		"Veloce/vendor/spdlog/include",
 		"Veloce/src",
-
+		"%{IncludeDir.glm}"
 	}
 
 	links
