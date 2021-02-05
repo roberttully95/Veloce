@@ -1,10 +1,14 @@
 #pragma once
 
 #ifdef VELOCE_PLATFORM_WINDOWS
-	#ifdef VELOCE_BUILD_DLL
-		#define VELOCE_API __declspec(dllexport)
+	#if VELOCE_DYNAMIC_LINK
+		#ifdef VELOCE_BUILD_DLL
+			#define VELOCE_API __declspec(dllexport)
+		#else
+			#define VELOCE_API __declspec(dllimport)
+		#endif
 	#else
-		#define VELOCE_API __declspec(dllimport)
+	#define VELOCE_API
 	#endif
 #else
 	#error Veloce currently only supports Windows!

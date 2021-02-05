@@ -24,9 +24,10 @@ include "Veloce/vendor/imgui"
 
 project "Veloce"
 	location "Veloce"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 	
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -44,6 +45,11 @@ project "Veloce"
 		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+	
 	includedirs
 	{
 		"%{prj.name}/src",
@@ -68,7 +74,6 @@ project "Veloce"
 
 		defines
 		{
-			"_CRT_SECURE_NO_WARNINGS",
 			"VELOCE_PLATFORM_WINDOWS",
 			"VELOCE_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
@@ -82,23 +87,24 @@ project "Veloce"
 	filter "configurations:Debug"
 		defines "VELOCE_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "VELOCE_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "VELOCE_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 	
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -136,14 +142,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "VELOCE_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "VELOCE_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "VELOCE_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
