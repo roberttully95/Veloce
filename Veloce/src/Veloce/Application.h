@@ -5,6 +5,7 @@
 #include "Veloce/LayerStack.h"
 #include "Veloce/Events/Event.h"
 #include "Veloce/Events/ApplicationEvent.h"
+#include "Veloce/ImGui/ImGuiLayer.h"
 
 namespace Veloce
 {
@@ -27,6 +28,7 @@ namespace Veloce
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

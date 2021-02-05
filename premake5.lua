@@ -15,12 +15,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {};
 IncludeDir["GLFW"] = "Veloce/vendor/GLFW/include"
 IncludeDir["Glad"] = "Veloce/vendor/Glad/include"
-IncludeDir["ImGui"] = "Veloce/vendor/ImGui"
-IncludeDir["glm"] = "Hazel/vendor/glm"
+IncludeDir["ImGui"] = "Veloce/vendor/imgui"
+IncludeDir["glm"] = "Veloce/vendor/glm"
 
 include "Veloce/vendor/GLFW"
 include "Veloce/vendor/Glad"
-include "Veloce/vendor/ImGui"
+include "Veloce/vendor/imgui"
 
 project "Veloce"
 	location "Veloce"
@@ -57,8 +57,8 @@ project "Veloce"
 	links
 	{
 		"GLFW",
-		"ImGui",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
@@ -115,6 +115,7 @@ project "Sandbox"
 	{
 		"Veloce/vendor/spdlog/include",
 		"Veloce/src",
+		"Veloce/vendor",
 		"%{IncludeDir.glm}"
 	}
 

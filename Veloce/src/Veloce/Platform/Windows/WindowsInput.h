@@ -2,7 +2,7 @@
 
 #include "Veloce/Input.h"
 
-namespace Hazel {
+namespace Veloce {
 
 	class WindowsInput : public Input
 	{

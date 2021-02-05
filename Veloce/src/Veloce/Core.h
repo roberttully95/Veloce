@@ -12,7 +12,7 @@
 
 #ifdef VELOCE_ENABLE_ASSERTS
 	#define VELOCE_ASSERT(x, ...) { if(!(x)) { VELOCE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-	#define VELOCE_CORE_ASSERT(x, ...) { if(!(x)) { HZ_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define VELOCE_CORE_ASSERT(x, ...) { if(!(x)) { VELOCE_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 #else
 	#define VELOCE_ASSERT(x, ...)
 	#define VELOCE_CORE_ASSERT(x, ...)

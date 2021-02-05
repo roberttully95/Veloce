@@ -2,7 +2,7 @@
 
 #include "Veloce/Core.h"
 
-namespace Hazel {
+namespace Veloce {
 
 	class VELOCE_API Input
 	{
