@@ -24,6 +24,7 @@ namespace Veloce
 		[[nodiscard]] static Application& Get(){ return *s_Instance; }
 		[[nodiscard]] Window& GetWindow() const { return *m_Window; }
 
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 

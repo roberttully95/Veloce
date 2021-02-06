@@ -4,7 +4,7 @@
 
 struct GLFWwindow;
 
-namespace VELOCE
+namespace Veloce
 {
 	class VELOCE_API OpenGLContext : public Veloce::GraphicsContext
 	{

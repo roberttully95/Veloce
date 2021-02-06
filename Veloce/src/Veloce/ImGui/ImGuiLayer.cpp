@@ -8,7 +8,6 @@
 #include "Veloce/Application.h"
 
 #include "GLFW/glfw3.h"
-#include "glad/glad.h"
 
 namespace Veloce
 {

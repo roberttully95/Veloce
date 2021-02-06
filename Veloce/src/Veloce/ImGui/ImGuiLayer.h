@@ -17,8 +17,8 @@ namespace Veloce
 		void OnDetach() override;
 		void OnImGuiRender() override;
 
-		static void Begin();
-		static void End();
+		void Begin();
+		void End();
 		
 	private:
 		float m_Time;
