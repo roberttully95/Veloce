@@ -5,7 +5,7 @@
 #include "Veloce/Events/MouseEvent.h"
 #include "Veloce/Events/KeyEvent.h"
 
-#include "glad/glad.h"
+#include "Veloce/Platform/OpenGL/OpenGLContext.h"
 
 namespace Veloce {
 
@@ -49,9 +49,11 @@ namespace Veloce {
 		}
 
 		m_Window = glfwCreateWindow(static_cast<int>(props.Width), static_cast<int>(props.Height), m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		auto status = gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress));
-		VELOCE_CORE_ASSERT(status, "Failed to initialize Glad.")
+
+		m_Context = new OpenGLContext(m_Window);
+		VELOCE_CORE_ASSERT(status, "Failed to initialize Glad!");
+		m_Context->Init();
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -155,7 +157,7 @@ namespace Veloce {
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)

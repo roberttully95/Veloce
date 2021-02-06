@@ -3,12 +3,14 @@
 #include "Veloce/Window.h"
 #include "GLFW/glfw3.h"
 
+#include "Veloce/Renderer/GraphicsContext.h"
+
 namespace Veloce {
 
 	class WindowsWindow : public Window
 	{
 	public:
-		WindowsWindow(const WindowProps& props);
+		explicit WindowsWindow(const WindowProps& props);
 		virtual ~WindowsWindow();
 
 		void OnUpdate() override;
@@ -26,7 +28,8 @@ namespace Veloce {
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();
 		GLFWwindow* m_Window;
-
+		GraphicsContext* m_Context;
+		
 		struct WindowData
 		{
 			std::string Title;

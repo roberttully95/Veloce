@@ -18,9 +18,12 @@ IncludeDir["Glad"] = "Veloce/vendor/Glad/include"
 IncludeDir["ImGui"] = "Veloce/vendor/imgui"
 IncludeDir["glm"] = "Veloce/vendor/glm"
 
-include "Veloce/vendor/GLFW"
-include "Veloce/vendor/Glad"
-include "Veloce/vendor/imgui"
+group "Dependencies"
+	include "Veloce/vendor/GLFW"
+	include "Veloce/vendor/Glad"
+	include "Veloce/vendor/imgui"
+group ""
+
 
 project "Veloce"
 	location "Veloce"
@@ -43,11 +46,6 @@ project "Veloce"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
-	}
-
-	defines
-	{
-		"_CRT_SECURE_NO_WARNINGS"
 	}
 	
 	includedirs
@@ -77,11 +75,6 @@ project "Veloce"
 			"VELOCE_PLATFORM_WINDOWS",
 			"VELOCE_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
-		}
-
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
